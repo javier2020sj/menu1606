@@ -1,0 +1,69 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    
+    <img  slot="end" src="http://lp9dejulio.dyndns.org:15003/images/logo" width="100px" />
+  </ion-toolbar>
+</ion-header>
+      <ion-content padding>
+
+        
+        <ion-grid>
+
+          <ion-row class="ion-justify-content-center">
+            <h1>MENÚ</h1>
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
+            
+          </ion-row>
+          <ion-row>
+
+            <ion-col></ion-col>
+            <ion-col size-xs="12" size-md="8" size-lg="5" size-xl="5">
+
+
+              <ion-card *ngFor="let item of data" (click)="modifyItem(item.id)">
+                <ion-img src={{getImageFromBase64(item.image)}} alt={{item.id}}  ></ion-img>
+                <ion-card-header>
+                  <ion-card-subtitle onload="get">
+                    <ion-row class="ion-justify-content-center">
+                      <h2 text-capitalize>{{ item.name}} (cod. {{item.id}})</h2>
+                    </ion-row> 
+                    
+                  </ion-card-subtitle>
+                  <ion-card-title>$ {{ item.price}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+
+                  {{ item.description }}
+                  <ion-fab  vertical="bottom" horizontal="end" slot="fixed" (click)="modifyItem(item.id)">
+                    <ion-fab-button size="small" color="light">
+                      <ion-icon name="create-outline"></ion-icon>
+                    </ion-fab-button>
+                  </ion-fab>
+                </ion-card-content>
+              </ion-card>
+              
+              
+              <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+                <ion-infinite-scroll-content
+                  loadingSpinner="crescent"
+                  loadingText="Cocinando...">
+                </ion-infinite-scroll-content>
+              </ion-infinite-scroll>
+            </ion-col>
+
+            <ion-col></ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button (click)="nuevoItem()">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+        
+      </ion-content>
+

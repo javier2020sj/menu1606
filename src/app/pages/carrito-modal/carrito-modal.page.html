@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Platos seleccionados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        TOTAL: $ {{Total}}
+        <ion-list>
+          <ion-list-header> Listado de productos </ion-list-header>
+
+          <ion-item *ngFor="let item of productos">
+            <!-- <ion-avatar slot="start">
+              <ion-img src="http://127.0.0.1:5000/menu/images/{{item.id}}" alt={{item.id}}  ></ion-img>
+            </ion-avatar> -->
+            <ion-label>
+              <h2>Plato: {{item.name}}</h2>
+              <h3>$ {{item.price}} X {{item.cant}}</h3>
+              <p>Subtotal: ${{item.cant*item.price}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="Cerrar()">Volver</ion-button>
+        <ion-button color="success" href="{{getWAText()}}">Enviar por WhatsApp</ion-button>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

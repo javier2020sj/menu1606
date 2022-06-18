@@ -1,0 +1,70 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <img  slot="end" src="http://lp9dejulio.dyndns.org:15003/images/logo" width="100px" />
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+
+
+<ion-grid>
+  <ion-row class="ion-justify-content-center">
+                      
+    <h3>Modificar</h3>  
+  </ion-row> 
+  <ion-row color="primary" justify-content-center>
+    <ion-col></ion-col>
+    <ion-col  size-xs="12" size-md="8" size-lg="5" size-xl="5">
+      <ion-card>
+        <ion-img *ngIf=getImageFromBase64(data.image) src={{getImageFromBase64(data.image)}}></ion-img>
+        <ion-card-header>
+          <ion-row class="ion-justify-content-center">
+                      
+          <ion-card-title>{{data.name}}</ion-card-title>
+            </ion-row> 
+          <ion-card-subtitle>{{data.description}}</ion-card-subtitle>
+          
+        </ion-card-header>
+        <ion-card-content>
+          <form [formGroup]="itemData" (ngSubmit)="itemForm(data.id)" novalidate>     
+                  <div text-center>
+                    
+                    <h3>Modificar</h3>
+                  </div>
+                  <div padding>
+                    <ion-item>
+                      <ion-label position="stacked">Nombre de producto</ion-label>
+                      <ion-input formControlName="name" type="text"  placeholder="{{data.name}}" required ></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="stacked">Descripcion</ion-label>
+                      <ion-input formControlName="description" type="text" placeholder="{{data.description}}" ></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="stacked">Importe</ion-label>
+                      <ion-input formControlName="price" type="number" placeholder="{{data.price}}" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="stacked">Foto</ion-label>
+                      <ion-input formControlName="photo" type='file' (change)="onFileChange($event)"></ion-input>
+                    </ion-item>
+                  </div>
+                  <div padding>
+                    <ion-button size="default" type="submit" >Guardar</ion-button>
+                    
+                  </div>
+
+            </form>
+            <ion-button size="default"  color="danger" (click)="deleteConfirm(data.id)">Eliminar</ion-button>
+          </ion-card-content>
+        </ion-card>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+</ion-grid>
+ </ion-content>

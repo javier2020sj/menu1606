@@ -1,0 +1,8 @@
+{
+  "name": "menuAdmin",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
